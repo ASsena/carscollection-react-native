@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert, ScrollView, Text } from 'react-native';
 
-export default function FormularioCarro({ navigation, route }) {
+export default function Formulario({ navigation, route }) {
   const carroEdit = route.params?.carro;
 
   const [nome, setNome] = useState('');
@@ -28,7 +28,14 @@ export default function FormularioCarro({ navigation, route }) {
       return;
     }
 
-    const carroData = { nome, modelo, ano: Number(ano), cor, preco: Number(preco), imagem };
+    const carroData = {
+      nome,
+      modelo,
+      ano: Number(ano),
+      cor,
+      preco: Number(preco),
+      imagem,
+    };
 
     try {
       const url = carroEdit
@@ -55,31 +62,36 @@ export default function FormularioCarro({ navigation, route }) {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styleForm.container}>
       <Text>Nome:</Text>
-      <TextInput style={styles.input} value={nome} onChangeText={setNome} />
+      <TextInput style={styleForm.input} value={nome} onChangeText={setNome} />
 
       <Text>Modelo:</Text>
-      <TextInput style={styles.input} value={modelo} onChangeText={setModelo} />
+      <TextInput style={styleForm.input} value={modelo} onChangeText={setModelo} />
 
       <Text>Ano:</Text>
-      <TextInput style={styles.input} value={ano} onChangeText={setAno} keyboardType="numeric" />
+      <TextInput style={styleForm.input} value={ano} onChangeText={setAno} keyboardType="numeric" />
 
       <Text>Cor:</Text>
-      <TextInput style={styles.input} value={cor} onChangeText={setCor} />
+      <TextInput style={styleForm.input} value={cor} onChangeText={setCor} />
 
       <Text>Preço:</Text>
-      <TextInput style={styles.input} value={preco} onChangeText={setPreco} keyboardType="numeric" />
+      <TextInput
+        style={styleForm.input}
+        value={preco}
+        onChangeText={setPreco}
+        keyboardType="numeric"
+      />
 
       <Text>URL da Imagem:</Text>
-      <TextInput style={styles.input} value={imagem} onChangeText={setImagem} />
+      <TextInput style={styleForm.input} value={imagem} onChangeText={setImagem} />
 
-      <Button title={carroEdit ? "Atualizar" : "Criar"} onPress={salvarCarro} />
+      <Button title={carroEdit ? 'Atualizar' : 'Criar'} onPress={salvarCarro} />
     </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
+const styleForm = StyleSheet.create({
   container: {
     padding: 15,
   },

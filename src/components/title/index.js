@@ -1,15 +1,14 @@
-import React from "react";  
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { Text, StyleSheet } from 'react-native';
 
-export default function Title(){
-    return(
-        <Text style={styles.titulo}>WebCars</Text>
-    )
+export default function Title() {
+  return <Text style={styles.title}>Web Cars</Text>;
 }
 
 const styles = StyleSheet.create({
-    titulo: {
-        fontWeight: "bold",
-        fontSize: 30,
-    }
-})
+  title: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: '#343E3E',
+  },
+});

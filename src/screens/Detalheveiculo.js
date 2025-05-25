@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Image, FlatList } from 'react-native';
+import { View, Text, Image, FlatList, StyleSheet, Dimensions } from 'react-native';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -40,10 +40,9 @@ export default function DetalhesVeiculo({ route }) {
       <FlatList
         data={carrosselItens}
         renderItem={renderItem}
-        keyExtractor={(item) => item.title}
         horizontal
+        keyExtractor={(item) => item.title}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 10 }}
       />
 
       <View style={styles.descricaoContainer}>
