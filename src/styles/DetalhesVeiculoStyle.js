@@ -1,0 +1,64 @@
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width: screenWidth } = Dimensions.get('window');
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+  nome: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  imagem: {
+    width: '100%',
+    height: 250,
+    marginBottom: 20,
+  },
+  slide: {
+    backgroundColor: '#eee',
+    borderRadius: 8,
+    height: 120,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  slideTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  slideValue: {
+    fontSize: 16,
+    marginTop: 8,
+  },
+  descricaoContainer: {
+    marginTop: 30,
+    paddingHorizontal: 10,
+  },
+  descricaoTitulo: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  descricaoTexto: {
+    fontSize: 16,
+    color: '#555',
+  },
+  botaoExcluir: {
+    marginTop: 30,
+    backgroundColor: '#FF3B30',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 10,
+    alignItems: 'center',
+    alignSelf: 'center',
+  },
+  textoBotaoExcluir: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});

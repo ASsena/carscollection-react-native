@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
 import Formulario from './src/screens/Formulario';
 import ListaVeiculos from './src/screens/ListaVeiculosScreen';
-import DetalhesVeiculo from './src/screens/Detalheveiculo';
+import DetalhesVeiculo from './src/screens/DetalheveiculoScreen';
 
 const Stack = createNativeStackNavigator();
 

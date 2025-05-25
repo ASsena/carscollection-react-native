@@ -1,5 +1,3 @@
-import { Alert } from 'react-native';
-
 export async function fetchCarros() {
   try {
     const response = await fetch('https://web-cars-7wxh.onrender.com/api/cars');
@@ -11,28 +9,19 @@ export async function fetchCarros() {
   }
 }
 
-export function deletarCarroComConfirmacao(id, callback) {
-  // Aqui você pode usar Alert para confirmar
+export async function deletarCarro(id) {
+  try {
+    const response = await fetch(`https://web-cars-7wxh.onrender.com/api/cars/${id}`, {
+      method: 'DELETE',
+    });
 
-  Alert.alert(
-    'Confirmação',
-    'Deseja realmente deletar este veículo?',
-    [
-      { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Sim',
-        onPress: async () => {
-          try {
-            await fetch(`https://web-cars-7wxh.onrender.com/api/cars/${id}`, {
-              method: 'DELETE',
-            });
-            if (callback) callback();
-          } catch (error) {
-            console.error('Erro ao deletar carro:', error);
-          }
-        },
-      },
-    ],
-    { cancelable: false }
-  );
+    if (!response.ok) {
+      throw new Error('Erro ao deletar carro');
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Erro ao deletar carro:', error);
+    throw error; // repropaga para ser tratado na tela
+  }
 }
