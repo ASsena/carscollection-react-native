@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, StyleSheet, Alert, ScrollView, Text } from 'react-native';
-
+import { View, TextInput, Alert, ScrollView, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import styles from '../styles/FormularioStyle';
 export default function Formulario({ navigation, route }) {
   const carroEdit = route.params?.carro;
 
@@ -62,44 +63,80 @@ export default function Formulario({ navigation, route }) {
   };
 
   return (
-    <ScrollView contentContainerStyle={styleForm.container}>
-      <Text>Nome:</Text>
-      <TextInput style={styleForm.input} value={nome} onChangeText={setNome} />
+    <ScrollView contentContainerStyle={styles.container}>
+      <StatusBar backgroundColor="#7C8AA8" barStyle="light-content" />
 
-      <Text>Modelo:</Text>
-      <TextInput style={styleForm.input} value={modelo} onChangeText={setModelo} />
+      {/* Cabeçalho com botão de voltar e título */}
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Ionicons name="chevron-back" size={20} color="white" />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>WebCars</Text>
+        <View style={{ width: 24 }} /> {/* Espaço para balancear layout */}
+      </View>
 
-      <Text>Ano:</Text>
-      <TextInput style={styleForm.input} value={ano} onChangeText={setAno} keyboardType="numeric" />
+      <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <Text style={styles.cardTitle}>
+            {carroEdit ? 'Editar Carro' : 'Cadastrar Carro'}
+          </Text>
+        </View>
 
-      <Text>Cor:</Text>
-      <TextInput style={styleForm.input} value={cor} onChangeText={setCor} />
+        <View style={styles.cardContent}>
+          <TextInput
+            style={styles.input}
+            placeholder="Url da imagem"
+            placeholderTextColor={"#ADB5BD"}
+            value={imagem}
+            onChangeText={setImagem}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Marca"
+            placeholderTextColor={"#ADB5BD"}
+            value={nome}
+            onChangeText={setNome}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Modelo"
+            placeholderTextColor={"#ADB5BD"}
+            value={modelo}
+            onChangeText={setModelo}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Ano"
+            placeholderTextColor={"#ADB5BD"}
+            value={ano}
+            onChangeText={setAno}
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Cor"
+            placeholderTextColor={"#ADB5BD"}
+            value={cor}
+            onChangeText={setCor}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Preço"
+            placeholderTextColor={"#ADB5BD"}
+            value={preco}
+            onChangeText={setPreco}
+            keyboardType="numeric"
+          />
 
-      <Text>Preço:</Text>
-      <TextInput
-        style={styleForm.input}
-        value={preco}
-        onChangeText={setPreco}
-        keyboardType="numeric"
-      />
-
-      <Text>URL da Imagem:</Text>
-      <TextInput style={styleForm.input} value={imagem} onChangeText={setImagem} />
-
-      <Button title={carroEdit ? 'Atualizar' : 'Criar'} onPress={salvarCarro} />
+          <TouchableOpacity style={styles.button} onPress={salvarCarro}>
+            <Text style={styles.buttonText}>
+              {carroEdit ? 'Salvar Alterações' : 'Cadastrar na coleção'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </ScrollView>
   );
 }
 
-const styleForm = StyleSheet.create({
-  container: {
-    padding: 15,
-  },
-  input: {
-    borderColor: '#999',
-    borderWidth: 1,
-    padding: 8,
-    marginBottom: 15,
-    borderRadius: 5,
-  },
-});
+
