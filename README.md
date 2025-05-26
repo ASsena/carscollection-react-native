@@ -94,8 +94,6 @@ cd carscollection-react-native
 
 ```bash
 npm install
-# ou
-yarn install
 ```
 
 3. **Configure a URL da API**
